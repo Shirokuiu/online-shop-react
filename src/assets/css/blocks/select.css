@@ -1,0 +1,13 @@
+.select {
+  position: relative;
+}
+
+.select__dropdown-icon {
+  position: absolute;
+  top: 0;
+  right: 20px;
+  bottom: 0;
+  margin: auto;
+  cursor: pointer;
+  fill: var(--main-blue);
+}

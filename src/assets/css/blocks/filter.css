@@ -72,18 +72,7 @@
   background-position: 90.5% 50%;
 }
 
-
-.filter__select-wrapper svg {
-  position: absolute;
-  top:64%;
-  right: 20px;
-  cursor: pointer;
-
-  fill: var(--main-blue);
-  }
-
 .filter__select-wrapper {
-  position: relative;
   margin-bottom: 21px;
 }
 
