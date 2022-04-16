@@ -3,29 +3,43 @@ import { useEffect } from 'react';
 
 import MainPageFilterCategories from 'src/components/pages/main-page/main-page-filter-categories';
 import { setDefaultSearchParams } from 'src/components/pages/main-page/helpers/set-default-search-params';
-import { useAppSelector } from 'src/hooks';
-import { getActiveCategoryValue } from 'src/store/main-page-process/selectors';
-import { hasSearchParams } from 'src/components/pages/main-page/helpers/has-search-params';
+import MainPageFilterEstateWrap from 'src/components/pages/main-page/main-page-filter-estate-wrap';
+import {
+  changeEstateType,
+  changeFilterCategory,
+} from 'src/store/main-page-process/reducer/main-page-process';
+import { CategoryType, SearchParamsKey } from 'src/store/types/main-page-process';
+import { useAppDispatch } from 'src/hooks';
+import { makeParamsEstateTypeForDispatch } from 'src/components/pages/main-page/helpers/make-params-estate-type-for-dispatch';
 
 function MainPageFilter() {
-  const categoryValue = useAppSelector(getActiveCategoryValue);
+  const dispatch = useAppDispatch();
   const [searchParams, setSearchParams] = useSearchParams();
 
   useEffect(() => {
-    if (!hasSearchParams(searchParams)) {
+    if (!searchParams.get(SearchParamsKey.Category)) {
       setSearchParams({ ...setDefaultSearchParams() });
-
-      return;
     }
 
-    setSearchParams({ category: searchParams.get('category') as string });
-  }, [searchParams]);
+    dispatch(changeFilterCategory(searchParams.get(SearchParamsKey.Category) as CategoryType));
+  }, []);
+
+  useEffect(() => {
+    if (searchParams.get(SearchParamsKey.EstateType)) {
+      dispatch(
+        changeEstateType(
+          makeParamsEstateTypeForDispatch(searchParams.get(SearchParamsKey.EstateType) as string),
+        ),
+      );
+    }
+  }, [searchParams.get(SearchParamsKey.EstateType)]);
 
   return (
     <section className="onlineshop-app__filter filter">
       <h2 className="title filter__title">Фильтр</h2>
       <form className="filter__form" action="#" method="post">
         <MainPageFilterCategories />
+        <MainPageFilterEstateWrap />
         <button className="button filter__button" type="submit">
           Показать
         </button>

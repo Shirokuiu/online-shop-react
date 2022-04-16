@@ -1,5 +1,5 @@
 import { CategoryType } from 'src/store/types/main-page-process';
 
-export type SearchParamsType = {
+export type DefaultSearchParamsType = {
   category: CategoryType;
 };

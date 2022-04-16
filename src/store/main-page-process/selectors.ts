@@ -5,6 +5,4 @@ import { NameSpace } from 'src/store/constants';
 
 export const getFilterCategories = (state: State) => state[NameSpace.MainPage].filter.categories;
 
-export const getActiveCategoryValue = createSelector([getFilterCategories], (categories) => {
-  return categories.find(({ isSelected }) => isSelected)?.value;
-});
+export const getEstateTypes = (state: State) => state[NameSpace.MainPage].filter.estateTypes;

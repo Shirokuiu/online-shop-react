@@ -8,11 +8,11 @@ const values = [
   CategoryType.Cars,
 ];
 const textMap = {
-  all: 'Все',
-  estate: 'Недвижимость',
-  laptops: 'Ноутбуки',
-  camera: 'Фотоаппараты',
-  cars: 'Автомобили',
+  [CategoryType.All]: 'Все',
+  [CategoryType.Estate]: 'Недвижимость',
+  [CategoryType.Laptops]: 'Ноутбуки',
+  [CategoryType.Camera]: 'Фотоаппараты',
+  [CategoryType.Cars]: 'Автомобили',
 };
 
 export const makeCategories = (): Category[] =>
