@@ -4,6 +4,7 @@ export type InitialState = {
   filter: {
     categories: Category[];
     estateTypes: EstateType[];
+    estateSquare: number;
   };
 };
 

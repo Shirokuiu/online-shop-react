@@ -1,15 +1,11 @@
 import MainPageFilterEstateType from 'src/components/pages/main-page/main-page-filter-estate-type';
+import MainPageFilterEstateSquare from 'src/components/pages/main-page/main-page-filter-estate-square';
 
 function MainPageFilterEstateWrap() {
   return (
     <div className="filter__estate">
       <MainPageFilterEstateType />
-      {/*<div className="filter__min-square">*/}
-      {/*  <label htmlFor="square">*/}
-      {/*    Минимальная площать, м<sup>2</sup>*/}
-      {/*  </label>*/}
-      {/*  <input type="number" id="square" name="min-square" min="1" value="" placeholder="0" />*/}
-      {/*</div>*/}
+      <MainPageFilterEstateSquare />
       {/*<fieldset className="filter__radiobuttons filter__radiobuttons--ram">*/}
       {/*  <legend>Количество комнат</legend>*/}
       {/*  <ul className="filter__ram-list">*/}

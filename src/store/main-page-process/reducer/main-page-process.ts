@@ -7,11 +7,13 @@ import { ActionType } from 'src/store/main-page-process/action-type';
 import { changeFilterByCategory } from 'src/store/main-page-process/helpers/change-filter-by-category';
 import { makeEstateType } from 'src/store/main-page-process/helpers/make-estate-type';
 import { changeIsCheckedEstateType } from 'src/store/main-page-process/helpers/change-is-checked-estate-type';
+import { DEFAULT_ESTATE_SQUARE_NUM } from 'src/store/main-page-process/constants';
 
 const initialState: InitialState = {
   filter: {
     categories: makeCategories(),
     estateTypes: makeEstateType(),
+    estateSquare: DEFAULT_ESTATE_SQUARE_NUM,
   },
 };
 
@@ -28,7 +30,11 @@ export const mainPageProcess = createSlice({
     ) {
       state.filter.estateTypes = changeIsCheckedEstateType(state.filter.estateTypes, estateValues);
     },
+    [ActionType.ChangeEstateSquare](state, { payload: squareNum }: { payload: number }) {
+      state.filter.estateSquare = squareNum;
+    },
   },
 });
 
-export const { changeFilterCategory, changeEstateType } = mainPageProcess.actions;
+export const { changeFilterCategory, changeEstateType, changeEstateSquare } =
+  mainPageProcess.actions;
