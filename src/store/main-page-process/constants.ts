@@ -1,0 +1,1 @@
+export const DEFAULT_ESTATE_SQUARE_NUM = 1;
