@@ -1,6 +1,6 @@
+// eslint-disable-next-line @typescript-eslint/ban-ts-comment
 // @ts-ignore
 import { createRoot } from 'react-dom/client';
-import { StrictMode } from 'react';
 import { BrowserRouter } from 'react-router-dom';
 import { Provider } from 'react-redux';
 

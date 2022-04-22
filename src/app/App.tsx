@@ -5,15 +5,11 @@ import MainPage from 'src/components/pages/main-page/main-page';
 
 function App() {
   return (
-    <main>
-      <section className="onlineshop-app">
-        <Routes>
-          <Route path="/">
-            <Route index element={<MainPage />} />
-          </Route>
-        </Routes>
-      </section>
-    </main>
+    <Routes>
+      <Route path="/">
+        <Route index element={<MainPage />} />
+      </Route>
+    </Routes>
   );
 }
 
