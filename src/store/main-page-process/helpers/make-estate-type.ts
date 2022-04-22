@@ -1,4 +1,4 @@
-import { CategoryType, EstateType, EstateTypeValue } from 'src/store/types/main-page-process';
+import { EstateType, EstateTypeValue } from 'src/store/types/main-page-process';
 
 const values = [EstateTypeValue.House, EstateTypeValue.flat, EstateTypeValue.apartments];
 const labelMap = {
