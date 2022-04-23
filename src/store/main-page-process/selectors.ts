@@ -6,3 +6,5 @@ export const getFilterCategories = (state: State) => state[NameSpace.MainPage].f
 export const getEstateTypes = (state: State) => state[NameSpace.MainPage].filter.estateTypes;
 
 export const getEstateSquare = (state: State) => state[NameSpace.MainPage].filter.estateSquare;
+
+export const getEstateRooms = (state: State) => state[NameSpace.MainPage].filter.estateRooms;

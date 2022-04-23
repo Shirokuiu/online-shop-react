@@ -8,12 +8,14 @@ import { changeFilterByCategory } from 'src/store/main-page-process/helpers/chan
 import { makeEstateType } from 'src/store/main-page-process/helpers/make-estate-type';
 import { changeIsCheckedEstateType } from 'src/store/main-page-process/helpers/change-is-checked-estate-type';
 import { DEFAULT_ESTATE_SQUARE_NUM } from 'src/store/main-page-process/constants';
+import { makeEstateRooms } from 'src/store/main-page-process/helpers/make-estate-rooms';
 
 const initialState: InitialState = {
   filter: {
     categories: makeCategories(),
     estateTypes: makeEstateType(),
     estateSquare: DEFAULT_ESTATE_SQUARE_NUM,
+    estateRooms: makeEstateRooms(),
   },
 };
 

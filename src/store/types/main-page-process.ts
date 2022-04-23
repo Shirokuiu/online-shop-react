@@ -5,6 +5,7 @@ export type InitialState = {
     categories: Category[];
     estateTypes: EstateType[];
     estateSquare: number;
+    estateRooms: EstateRoom[];
   };
 };
 
@@ -17,6 +18,14 @@ export type EstateType = {
   label: string;
   value: EstateTypeValue;
   isChecked: boolean;
+};
+
+export type EstateRoom = {
+  key: number;
+  id: string;
+  label: string;
+  name: string;
+  value: string;
 };
 
 export enum EstateTypeValue {
@@ -33,7 +42,11 @@ export enum CategoryType {
   Cars = 'cars',
 }
 
-export enum SearchParamsKey {
-  Category = 'category',
-  EstateType = 'estateType',
+export enum EstateRoomValue {
+  Any = 'any',
+  One = 'one',
+  Two = 'two',
+  Three = 'three',
+  Four = 'four',
+  Fivemore = 'fivemore',
 }
