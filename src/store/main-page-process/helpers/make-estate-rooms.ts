@@ -20,5 +20,6 @@ export const makeEstateRooms = (): EstateRoom[] => {
     value,
     name: 'room',
     label: labelMap[value],
+    checkedValue: values[0],
   }));
 };

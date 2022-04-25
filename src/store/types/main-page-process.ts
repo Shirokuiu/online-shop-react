@@ -25,7 +25,8 @@ export type EstateRoom = {
   id: string;
   label: string;
   name: string;
-  value: string;
+  value: EstateRoomValue;
+  checkedValue: EstateRoomValue;
 };
 
 export enum EstateTypeValue {
