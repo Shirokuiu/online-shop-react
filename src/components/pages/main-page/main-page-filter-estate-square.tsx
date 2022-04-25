@@ -7,8 +7,8 @@ function MainPageFilterEstateSquare() {
   const squareNum = useAppSelector(getEstateSquare);
   const dispatch = useAppDispatch();
 
-  const handleSquareChange = (squareNum: number) => {
-    dispatch(changeEstateSquare(squareNum));
+  const handleSquareChange = (squareNumber: number) => {
+    dispatch(changeEstateSquare(squareNumber));
   };
 
   return (
