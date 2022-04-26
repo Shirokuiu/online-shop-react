@@ -14,11 +14,11 @@ import { ActionType } from 'src/store/main-page-process/action-type';
 import { makeEstateType } from 'src/store/main-page-process/helpers/make-estate-type';
 import { DEFAULT_ESTATE_SQUARE_NUM } from 'src/store/main-page-process/constants';
 import { makeEstateRooms } from 'src/store/main-page-process/helpers/make-estate-rooms';
-import { changeCheckedValueEstateRooms } from 'src/store/main-page-process/helpers/change-checked-value-estate-rooms';
 import { makeCameraType } from 'src/store/main-page-process/helpers/make-camera-type';
 import { makeCameraResolutions } from 'src/store/main-page-process/helpers/make-camera-resolutions';
 import { changeOption } from 'src/components/shared/select/helpers/change-option';
 import { changeChecked } from 'src/components/shared/checkbox/helpers/change-checked';
+import { changeCheckedRadioBtn } from 'src/components/shared/radio-btn/helpers/change-checked-radio-btn';
 
 const initialState: InitialState = {
   filter: {
@@ -52,7 +52,7 @@ export const mainPageProcess = createSlice({
       state.filter.estate.square = squareNum;
     },
     [ActionType.ChangeEstateRoom](state, { payload: value }: { payload: EstateRoomValue }) {
-      state.filter.estate.rooms = changeCheckedValueEstateRooms(state.filter.estate.rooms, value);
+      state.filter.estate.rooms = changeCheckedRadioBtn(state.filter.estate.rooms, value);
     },
     [ActionType.ChangeCameraType](state, { payload: cameraValues }: { payload: CameraValue[] }) {
       state.filter.camera.types = changeChecked(state.filter.camera.types, cameraValues);
