@@ -13,3 +13,6 @@ export const getCameraTypes = (state: State) => state[NameSpace.MainPage].filter
 
 export const getCameraResolutions = (state: State) =>
   state[NameSpace.MainPage].filter.camera.resolutions;
+
+export const getCameraVideoResolutions = (state: State) =>
+  state[NameSpace.MainPage].filter.camera.videoResolutions;

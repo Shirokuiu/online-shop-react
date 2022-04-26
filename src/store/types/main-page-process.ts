@@ -13,6 +13,7 @@ export type InitialState = {
     camera: {
       types: CameraType[];
       resolutions: CameraResolution[];
+      videoResolutions: CameraVideResolution[];
     };
   };
 };
@@ -26,6 +27,8 @@ export type EstateRoom = RadioBtn;
 export type CameraType = Checkbox;
 
 export type CameraResolution = Option;
+
+export type CameraVideResolution = Option;
 
 export enum EstateTypeValue {
   House = 'house',
@@ -62,4 +65,12 @@ export enum CameraResolutionValue {
   '5mp' = '5mp',
   '7mp' = '7mp',
   '10mp' = '10mp',
+}
+
+export enum CameraVideoResolutionValue {
+  Any = 'any',
+  Hd = 'HD',
+  FullHd = 'Full_HD',
+  '4K' = '4K',
+  '5K' = '5K',
 }

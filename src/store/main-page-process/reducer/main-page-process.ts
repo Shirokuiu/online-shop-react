@@ -5,6 +5,7 @@ import { makeCategories } from 'src/store/main-page-process/helpers/make-categor
 import {
   CameraResolutionValue,
   CameraValue,
+  CameraVideoResolutionValue,
   CategoryType,
   EstateRoomValue,
   EstateTypeValue,
@@ -19,6 +20,7 @@ import { makeCameraResolutions } from 'src/store/main-page-process/helpers/make-
 import { changeOption } from 'src/components/shared/select/helpers/change-option';
 import { changeChecked } from 'src/components/shared/checkbox/helpers/change-checked';
 import { changeCheckedRadioBtn } from 'src/components/shared/radio-btn/helpers/change-checked-radio-btn';
+import { makeCameraVideoResolutions } from 'src/store/main-page-process/helpers/make-camera-video-resolutions';
 
 const initialState: InitialState = {
   filter: {
@@ -31,6 +33,7 @@ const initialState: InitialState = {
     camera: {
       types: makeCameraType(),
       resolutions: makeCameraResolutions(),
+      videoResolutions: makeCameraVideoResolutions(),
     },
   },
 };
@@ -63,6 +66,15 @@ export const mainPageProcess = createSlice({
     ) {
       state.filter.camera.resolutions = changeOption(state.filter.camera.resolutions, resolution);
     },
+    [ActionType.ChangeCameraVideoResolution](
+      state,
+      { payload: videoResolution }: { payload: CameraVideoResolutionValue },
+    ) {
+      state.filter.camera.videoResolutions = changeOption(
+        state.filter.camera.videoResolutions,
+        videoResolution,
+      );
+    },
   },
 });
 
@@ -73,4 +85,5 @@ export const {
   changeEstateRoom,
   changeCameraType,
   changeCameraResolution,
+  changeCameraVideoResolution,
 } = mainPageProcess.actions;

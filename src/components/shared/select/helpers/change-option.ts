@@ -1,7 +1,7 @@
 import { Option } from 'src/components/shared/select/types';
 
-export const changeOption = (categories: Option[], selectedOptionValue: string): Option[] =>
-  categories.map((option) => ({
+export const changeOption = (options: Option[], selectedOptionValue: string): Option[] =>
+  options.map((option) => ({
     ...option,
     isSelected: option.value === selectedOptionValue,
   }));
