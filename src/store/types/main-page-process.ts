@@ -1,5 +1,6 @@
 import { Option } from 'src/components/shared/select/types';
 import { Checkbox } from 'src/components/shared/checkbox/types';
+import { RadioBtn } from 'src/components/shared/radio-btn/types';
 
 export type InitialState = {
   filter: {
@@ -20,14 +21,7 @@ export type Category = Option;
 
 export type EstateType = Checkbox;
 
-export type EstateRoom = {
-  key: number;
-  id: string;
-  label: string;
-  name: string;
-  value: EstateRoomValue;
-  checkedValue: EstateRoomValue;
-};
+export type EstateRoom = RadioBtn;
 
 export type CameraType = Checkbox;
 
