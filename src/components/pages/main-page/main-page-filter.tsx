@@ -1,6 +1,6 @@
 import MainPageFilterCategories from 'src/components/pages/main-page/main-page-filter-categories';
 import MainPageFilterEstateWrap from 'src/components/pages/main-page/main-page-filter-estate-wrap';
-import MainPageFilterCamera from 'src/components/pages/main-page/main-page-filter-camera';
+import MainPageFilterCameraWrap from 'src/components/pages/main-page/main-page-filter-camera-wrap';
 
 function MainPageFilter() {
   return (
@@ -9,7 +9,7 @@ function MainPageFilter() {
       <form className="filter__form" action="#" method="post">
         <MainPageFilterCategories />
         <MainPageFilterEstateWrap />
-        <MainPageFilterCamera />
+        <MainPageFilterCameraWrap />
         <button className="button filter__button" type="submit">
           Показать
         </button>
