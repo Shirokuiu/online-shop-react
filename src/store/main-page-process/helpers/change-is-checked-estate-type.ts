@@ -6,5 +6,5 @@ export const changeIsCheckedEstateType = (
 ) =>
   estateTypes.map((estateType: EstateType) => ({
     ...estateType,
-    isChecked: estateValues.includes(estateType.value),
+    isChecked: estateValues.includes(estateType.value as EstateTypeValue),
   }));

@@ -1,6 +1,6 @@
 import { CameraType, CameraValue } from 'src/store/types/main-page-process';
+import { makeCheckboxes } from 'src/components/shared/checkbox/helpers/make-checkboxes';
 
-const types = Object.values(CameraValue);
 const labelMap = {
   [CameraValue.Mirror]: 'Зеркальный',
   [CameraValue.Digital]: 'Цифровой',
@@ -8,11 +8,4 @@ const labelMap = {
 };
 
 export const makeCameraType = (): CameraType[] =>
-  types.map((type, idx) => ({
-    key: idx + 1,
-    id: type,
-    value: type,
-    name: 'camera-type',
-    label: labelMap[type],
-    isChecked: false,
-  }));
+  makeCheckboxes(CameraValue, 'camera-type', labelMap);

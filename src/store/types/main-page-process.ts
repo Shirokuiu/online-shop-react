@@ -1,4 +1,5 @@
 import { Option } from 'src/components/shared/select/types';
+import { Checkbox } from 'src/components/shared/checkbox/types';
 
 export type InitialState = {
   filter: {
@@ -17,14 +18,7 @@ export type InitialState = {
 
 export type Category = Option;
 
-export type EstateType = {
-  key: number;
-  id: string;
-  name: string;
-  label: string;
-  value: EstateTypeValue;
-  isChecked: boolean;
-};
+export type EstateType = Checkbox;
 
 export type EstateRoom = {
   key: number;
@@ -35,14 +29,7 @@ export type EstateRoom = {
   checkedValue: EstateRoomValue;
 };
 
-export type CameraType = {
-  key: number;
-  id: string;
-  value: CameraValue;
-  name: string;
-  label: string;
-  isChecked: boolean;
-};
+export type CameraType = Checkbox;
 
 export type CameraResolution = Option;
 

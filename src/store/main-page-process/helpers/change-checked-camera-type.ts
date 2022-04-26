@@ -6,5 +6,5 @@ export const changeCheckedValueCameraTypes = (
 ): CameraType[] =>
   cameraTypes.map((cameraType) => ({
     ...cameraType,
-    isChecked: values.includes(cameraType.value),
+    isChecked: values.includes(cameraType.value as CameraValue),
   }));
