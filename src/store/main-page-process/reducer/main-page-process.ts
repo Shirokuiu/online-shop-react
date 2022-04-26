@@ -11,7 +11,6 @@ import {
   InitialState,
 } from 'src/store/types/main-page-process';
 import { ActionType } from 'src/store/main-page-process/action-type';
-import { changeFilterByCategory } from 'src/store/main-page-process/helpers/change-filter-by-category';
 import { makeEstateType } from 'src/store/main-page-process/helpers/make-estate-type';
 import { changeIsCheckedEstateType } from 'src/store/main-page-process/helpers/change-is-checked-estate-type';
 import { DEFAULT_ESTATE_SQUARE_NUM } from 'src/store/main-page-process/constants';
@@ -20,7 +19,7 @@ import { changeCheckedValueEstateRooms } from 'src/store/main-page-process/helpe
 import { makeCameraType } from 'src/store/main-page-process/helpers/make-camera-type';
 import { changeCheckedValueCameraTypes } from 'src/store/main-page-process/helpers/change-checked-camera-type';
 import { makeCameraResolutions } from 'src/store/main-page-process/helpers/make-camera-resolutions';
-import { changeCameraResolutions } from 'src/store/main-page-process/helpers/change-camera-resolution';
+import { changeOption } from 'src/components/shared/select/helpers/change-option';
 
 const initialState: InitialState = {
   filter: {
@@ -44,7 +43,7 @@ export const mainPageProcess = createSlice({
   initialState,
   reducers: {
     [ActionType.ChangeFilterCategory](state, { payload: category }: { payload: CategoryType }) {
-      state.filter.categories = changeFilterByCategory(state.filter.categories, category);
+      state.filter.categories = changeOption(state.filter.categories, category);
     },
     [ActionType.ChangeEstateType](
       state,
@@ -71,10 +70,7 @@ export const mainPageProcess = createSlice({
       state,
       { payload: resolution }: { payload: CameraResolutionValue },
     ) {
-      state.filter.camera.resolutions = changeCameraResolutions(
-        state.filter.camera.resolutions,
-        resolution,
-      );
+      state.filter.camera.resolutions = changeOption(state.filter.camera.resolutions, resolution);
     },
   },
 });
