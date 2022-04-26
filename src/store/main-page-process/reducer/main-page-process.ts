@@ -12,14 +12,13 @@ import {
 } from 'src/store/types/main-page-process';
 import { ActionType } from 'src/store/main-page-process/action-type';
 import { makeEstateType } from 'src/store/main-page-process/helpers/make-estate-type';
-import { changeIsCheckedEstateType } from 'src/store/main-page-process/helpers/change-is-checked-estate-type';
 import { DEFAULT_ESTATE_SQUARE_NUM } from 'src/store/main-page-process/constants';
 import { makeEstateRooms } from 'src/store/main-page-process/helpers/make-estate-rooms';
 import { changeCheckedValueEstateRooms } from 'src/store/main-page-process/helpers/change-checked-value-estate-rooms';
 import { makeCameraType } from 'src/store/main-page-process/helpers/make-camera-type';
-import { changeCheckedValueCameraTypes } from 'src/store/main-page-process/helpers/change-checked-camera-type';
 import { makeCameraResolutions } from 'src/store/main-page-process/helpers/make-camera-resolutions';
 import { changeOption } from 'src/components/shared/select/helpers/change-option';
+import { changeChecked } from 'src/components/shared/checkbox/helpers/change-checked';
 
 const initialState: InitialState = {
   filter: {
@@ -47,10 +46,7 @@ export const mainPageProcess = createSlice({
       state,
       { payload: estateValues }: { payload: Array<EstateTypeValue> },
     ) {
-      state.filter.estate.types = changeIsCheckedEstateType(
-        state.filter.estate.types,
-        estateValues,
-      );
+      state.filter.estate.types = changeChecked(state.filter.estate.types, estateValues);
     },
     [ActionType.ChangeEstateSquare](state, { payload: squareNum }: { payload: number }) {
       state.filter.estate.square = squareNum;
@@ -59,10 +55,7 @@ export const mainPageProcess = createSlice({
       state.filter.estate.rooms = changeCheckedValueEstateRooms(state.filter.estate.rooms, value);
     },
     [ActionType.ChangeCameraType](state, { payload: cameraValues }: { payload: CameraValue[] }) {
-      state.filter.camera.types = changeCheckedValueCameraTypes(
-        state.filter.camera.types,
-        cameraValues,
-      );
+      state.filter.camera.types = changeChecked(state.filter.camera.types, cameraValues);
     },
     [ActionType.ChangeCameraResolution](
       state,
