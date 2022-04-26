@@ -1,7 +1,7 @@
 import { CameraResolution, CameraResolutionValue } from 'src/store/types/main-page-process';
 import { DEFAULT_CAMERA_RESOLUTION_VALUE } from 'src/store/main-page-process/constants';
+import { makeOptions } from 'src/components/shared/select/helpers/make-options';
 
-const resolutionValues: CameraResolutionValue[] = Object.values(CameraResolutionValue);
 const resolutionTextMap = {
   [CameraResolutionValue['1mp']]: '1 МП',
   [CameraResolutionValue['3mp']]: '3 МП',
@@ -11,10 +11,4 @@ const resolutionTextMap = {
 };
 
 export const makeCameraResolutions = (): CameraResolution[] =>
-  resolutionValues.map((value, idx) => ({
-    value,
-    key: idx + 1,
-    id: idx + 1,
-    text: resolutionTextMap[value],
-    isSelected: value === DEFAULT_CAMERA_RESOLUTION_VALUE,
-  }));
+  makeOptions(CameraResolutionValue, DEFAULT_CAMERA_RESOLUTION_VALUE, resolutionTextMap);

@@ -44,9 +44,7 @@ export type CameraType = {
   isChecked: boolean;
 };
 
-export interface CameraResolution extends Option {
-  key: number;
-}
+export type CameraResolution = Option;
 
 export enum EstateTypeValue {
   House = 'house',
