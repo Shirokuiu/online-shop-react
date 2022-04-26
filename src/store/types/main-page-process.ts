@@ -3,9 +3,11 @@ import { Option } from 'src/components/shared/select/types';
 export type InitialState = {
   filter: {
     categories: Category[];
-    estateTypes: EstateType[];
-    estateSquare: number;
-    estateRooms: EstateRoom[];
+    estate: {
+      types: EstateType[];
+      square: number;
+      rooms: EstateRoom[];
+    };
   };
 };
 

@@ -19,9 +19,11 @@ import { changeCheckedValueEstateRooms } from 'src/store/main-page-process/helpe
 const initialState: InitialState = {
   filter: {
     categories: makeCategories(),
-    estateTypes: makeEstateType(),
-    estateSquare: DEFAULT_ESTATE_SQUARE_NUM,
-    estateRooms: makeEstateRooms(),
+    estate: {
+      types: makeEstateType(),
+      square: DEFAULT_ESTATE_SQUARE_NUM,
+      rooms: makeEstateRooms(),
+    },
   },
 };
 
@@ -36,13 +38,16 @@ export const mainPageProcess = createSlice({
       state,
       { payload: estateValues }: { payload: Array<EstateTypeValue> },
     ) {
-      state.filter.estateTypes = changeIsCheckedEstateType(state.filter.estateTypes, estateValues);
+      state.filter.estate.types = changeIsCheckedEstateType(
+        state.filter.estate.types,
+        estateValues,
+      );
     },
     [ActionType.ChangeEstateSquare](state, { payload: squareNum }: { payload: number }) {
-      state.filter.estateSquare = squareNum;
+      state.filter.estate.square = squareNum;
     },
     [ActionType.ChangeEstateRoom](state, { payload: value }: { payload: EstateRoomValue }) {
-      state.filter.estateRooms = changeCheckedValueEstateRooms(state.filter.estateRooms, value);
+      state.filter.estate.rooms = changeCheckedValueEstateRooms(state.filter.estate.rooms, value);
     },
   },
 });
