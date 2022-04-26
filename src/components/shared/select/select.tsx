@@ -26,9 +26,9 @@ function Select({
         disabled={options.length === 0}
         onChange={handleSelectChange}
       >
-        {options.map((option) => (
-          <option key={option.id} value={option.value}>
-            {option.text}
+        {options.map(({ key, value, label }) => (
+          <option key={key} value={value}>
+            {label}
           </option>
         ))}
       </select>
