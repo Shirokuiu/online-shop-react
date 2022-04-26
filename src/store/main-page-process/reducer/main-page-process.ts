@@ -36,8 +36,6 @@ const initialState: InitialState = {
   },
 };
 
-makeCameraType();
-
 export const mainPageProcess = createSlice({
   name: NameSpace.MainPage,
   initialState,
