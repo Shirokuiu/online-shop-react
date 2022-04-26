@@ -10,6 +10,7 @@ export type InitialState = {
     };
     camera: {
       types: CameraType[];
+      resolutions: CameraResolution[];
     };
   };
 };
@@ -43,6 +44,10 @@ export type CameraType = {
   isChecked: boolean;
 };
 
+export interface CameraResolution extends Option {
+  key: number;
+}
+
 export enum EstateTypeValue {
   House = 'house',
   flat = 'flat',
@@ -70,4 +75,12 @@ export enum CameraValue {
   Mirror = 'mirror',
   Digital = 'digital',
   Mirrorless = 'mirrorless',
+}
+
+export enum CameraResolutionValue {
+  '1mp' = '1mp',
+  '3mp' = '3mp',
+  '5mp' = '5mp',
+  '7mp' = '7mp',
+  '10mp' = '10mp',
 }

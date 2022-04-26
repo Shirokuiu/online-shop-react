@@ -10,3 +10,6 @@ export const getEstateSquare = (state: State) => state[NameSpace.MainPage].filte
 export const getEstateRooms = (state: State) => state[NameSpace.MainPage].filter.estate.rooms;
 
 export const getCameraTypes = (state: State) => state[NameSpace.MainPage].filter.camera.types;
+
+export const getCameraResolutions = (state: State) =>
+  state[NameSpace.MainPage].filter.camera.resolutions;

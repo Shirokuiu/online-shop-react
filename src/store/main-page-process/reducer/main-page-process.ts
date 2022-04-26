@@ -3,6 +3,7 @@ import { createSlice } from '@reduxjs/toolkit';
 import { NameSpace } from 'src/store/constants';
 import { makeCategories } from 'src/store/main-page-process/helpers/make-categories';
 import {
+  CameraResolutionValue,
   CameraValue,
   CategoryType,
   EstateRoomValue,
@@ -18,6 +19,8 @@ import { makeEstateRooms } from 'src/store/main-page-process/helpers/make-estate
 import { changeCheckedValueEstateRooms } from 'src/store/main-page-process/helpers/change-checked-value-estate-rooms';
 import { makeCameraType } from 'src/store/main-page-process/helpers/make-camera-type';
 import { changeCheckedValueCameraTypes } from 'src/store/main-page-process/helpers/change-checked-camera-type';
+import { makeCameraResolutions } from 'src/store/main-page-process/helpers/make-camera-resolutions';
+import { changeCameraResolutions } from 'src/store/main-page-process/helpers/change-camera-resolution';
 
 const initialState: InitialState = {
   filter: {
@@ -29,6 +32,7 @@ const initialState: InitialState = {
     },
     camera: {
       types: makeCameraType(),
+      resolutions: makeCameraResolutions(),
     },
   },
 };
@@ -63,6 +67,15 @@ export const mainPageProcess = createSlice({
         cameraValues,
       );
     },
+    [ActionType.ChangeCameraResolution](
+      state,
+      { payload: resolution }: { payload: CameraResolutionValue },
+    ) {
+      state.filter.camera.resolutions = changeCameraResolutions(
+        state.filter.camera.resolutions,
+        resolution,
+      );
+    },
   },
 });
 
@@ -72,4 +85,5 @@ export const {
   changeEstateSquare,
   changeEstateRoom,
   changeCameraType,
+  changeCameraResolution,
 } = mainPageProcess.actions;
