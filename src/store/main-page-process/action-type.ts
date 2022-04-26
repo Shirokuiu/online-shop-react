@@ -3,5 +3,6 @@ export enum ActionType {
   ChangeEstateType = 'changeEstateType',
   ChangeEstateSquare = 'changeEstateSquare',
   ChangeEstateRoom = 'changeEstateRoom',
+  ChangeCameraType = 'changeCameraType',
   ClearState = 'clearState',
 }

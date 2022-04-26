@@ -8,6 +8,9 @@ export type InitialState = {
       square: number;
       rooms: EstateRoom[];
     };
+    camera: {
+      types: CameraType[];
+    };
   };
 };
 
@@ -31,6 +34,15 @@ export type EstateRoom = {
   checkedValue: EstateRoomValue;
 };
 
+export type CameraType = {
+  key: number;
+  id: string;
+  value: CameraValue;
+  name: string;
+  label: string;
+  isChecked: boolean;
+};
+
 export enum EstateTypeValue {
   House = 'house',
   flat = 'flat',
@@ -52,4 +64,10 @@ export enum EstateRoomValue {
   Three = 'three',
   Four = 'four',
   Fivemore = 'fivemore',
+}
+
+export enum CameraValue {
+  Mirror = 'mirror',
+  Digital = 'digital',
+  Mirrorless = 'mirrorless',
 }

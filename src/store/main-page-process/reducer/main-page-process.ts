@@ -3,6 +3,7 @@ import { createSlice } from '@reduxjs/toolkit';
 import { NameSpace } from 'src/store/constants';
 import { makeCategories } from 'src/store/main-page-process/helpers/make-categories';
 import {
+  CameraValue,
   CategoryType,
   EstateRoomValue,
   EstateTypeValue,
@@ -15,6 +16,8 @@ import { changeIsCheckedEstateType } from 'src/store/main-page-process/helpers/c
 import { DEFAULT_ESTATE_SQUARE_NUM } from 'src/store/main-page-process/constants';
 import { makeEstateRooms } from 'src/store/main-page-process/helpers/make-estate-rooms';
 import { changeCheckedValueEstateRooms } from 'src/store/main-page-process/helpers/change-checked-value-estate-rooms';
+import { makeCameraType } from 'src/store/main-page-process/helpers/make-camera-type';
+import { changeCheckedValueCameraTypes } from 'src/store/main-page-process/helpers/change-checked-camera-type';
 
 const initialState: InitialState = {
   filter: {
@@ -24,8 +27,13 @@ const initialState: InitialState = {
       square: DEFAULT_ESTATE_SQUARE_NUM,
       rooms: makeEstateRooms(),
     },
+    camera: {
+      types: makeCameraType(),
+    },
   },
 };
+
+makeCameraType();
 
 export const mainPageProcess = createSlice({
   name: NameSpace.MainPage,
@@ -49,8 +57,19 @@ export const mainPageProcess = createSlice({
     [ActionType.ChangeEstateRoom](state, { payload: value }: { payload: EstateRoomValue }) {
       state.filter.estate.rooms = changeCheckedValueEstateRooms(state.filter.estate.rooms, value);
     },
+    [ActionType.ChangeCameraType](state, { payload: cameraValues }: { payload: CameraValue[] }) {
+      state.filter.camera.types = changeCheckedValueCameraTypes(
+        state.filter.camera.types,
+        cameraValues,
+      );
+    },
   },
 });
 
-export const { changeFilterCategory, changeEstateType, changeEstateSquare, changeEstateRoom } =
-  mainPageProcess.actions;
+export const {
+  changeFilterCategory,
+  changeEstateType,
+  changeEstateSquare,
+  changeEstateRoom,
+  changeCameraType,
+} = mainPageProcess.actions;
