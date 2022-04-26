@@ -1,6 +1,6 @@
 import { EstateType, EstateTypeValue } from 'src/store/types/main-page-process';
+import { makeCheckboxes } from 'src/components/shared/checkbox/helpers/make-checkboxes';
 
-const values = [EstateTypeValue.House, EstateTypeValue.flat, EstateTypeValue.apartments];
 const labelMap = {
   [EstateTypeValue.House]: 'Дом',
   [EstateTypeValue.flat]: 'Квартира',
@@ -8,11 +8,4 @@ const labelMap = {
 };
 
 export const makeEstateType = (): EstateType[] =>
-  values.map((value, idx) => ({
-    key: idx + 1,
-    id: value,
-    name: value,
-    label: labelMap[value],
-    isChecked: false,
-    value,
-  }));
+  makeCheckboxes(EstateTypeValue, 'estate-type', labelMap);

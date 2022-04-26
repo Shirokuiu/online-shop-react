@@ -1,6 +1,5 @@
 import { EstateRoom, EstateRoomValue } from 'src/store/types/main-page-process';
-
-const getValues = () => Object.values(EstateRoomValue).map((value) => value);
+import { makeRadioBtns } from 'src/components/shared/radio-btn/helpers/make-radio-btns';
 
 const labelMap = {
   [EstateRoomValue.Any]: 'Любое',
@@ -11,15 +10,5 @@ const labelMap = {
   [EstateRoomValue.Fivemore]: '5+',
 };
 
-export const makeEstateRooms = (): EstateRoom[] => {
-  const values = getValues();
-
-  return values.map((value, idx) => ({
-    key: idx + 1,
-    id: value,
-    value,
-    name: 'room',
-    label: labelMap[value],
-    checkedValue: values[0],
-  }));
-};
+export const makeEstateRooms = (): EstateRoom[] =>
+  makeRadioBtns(EstateRoomValue, 'rooms', EstateRoomValue.Any, labelMap);

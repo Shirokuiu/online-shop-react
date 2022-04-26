@@ -8,3 +8,12 @@ export type RadioBtnProps = {
   onRadioChange?: (value: string) => void;
   children?: ReactNode;
 };
+
+export type RadioBtn = {
+  key: number;
+  id: string;
+  value: string;
+  name: string;
+  label: string;
+  checkedValue: string;
+};

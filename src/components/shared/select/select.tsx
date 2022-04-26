@@ -1,5 +1,6 @@
+import { ChangeEvent, useState } from 'react';
+
 import { SelectProps } from 'src/components/shared/select/types';
-import { ChangeEvent } from 'react';
 
 function Select({
   id = 'select',
@@ -7,9 +8,12 @@ function Select({
   options = [],
   onChange = () => undefined,
 }: SelectProps) {
-  const selectedValue = options.find((option) => option.isSelected)?.value;
+  const [selectedValue, setSelectedValue] = useState<string | undefined>(
+    options.find((option) => option.isSelected)?.value,
+  );
 
   const handleSelectChange = (evt: ChangeEvent<HTMLSelectElement>) => {
+    setSelectedValue(evt.target.value);
     onChange(evt.target.value);
   };
 
@@ -22,9 +26,9 @@ function Select({
         disabled={options.length === 0}
         onChange={handleSelectChange}
       >
-        {options.map((option) => (
-          <option key={option.id} value={option.value}>
-            {option.text}
+        {options.map(({ key, value, label }) => (
+          <option key={key} value={value}>
+            {label}
           </option>
         ))}
       </select>

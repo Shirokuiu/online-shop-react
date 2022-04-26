@@ -3,25 +3,38 @@ import { createSlice } from '@reduxjs/toolkit';
 import { NameSpace } from 'src/store/constants';
 import { makeCategories } from 'src/store/main-page-process/helpers/make-categories';
 import {
+  CameraResolutionValue,
+  CameraValue,
+  CameraVideoResolutionValue,
   CategoryType,
   EstateRoomValue,
   EstateTypeValue,
   InitialState,
 } from 'src/store/types/main-page-process';
 import { ActionType } from 'src/store/main-page-process/action-type';
-import { changeFilterByCategory } from 'src/store/main-page-process/helpers/change-filter-by-category';
 import { makeEstateType } from 'src/store/main-page-process/helpers/make-estate-type';
-import { changeIsCheckedEstateType } from 'src/store/main-page-process/helpers/change-is-checked-estate-type';
 import { DEFAULT_ESTATE_SQUARE_NUM } from 'src/store/main-page-process/constants';
 import { makeEstateRooms } from 'src/store/main-page-process/helpers/make-estate-rooms';
-import { changeCheckedValueEstateRooms } from 'src/store/main-page-process/helpers/change-checked-value-estate-rooms';
+import { makeCameraType } from 'src/store/main-page-process/helpers/make-camera-type';
+import { makeCameraResolutions } from 'src/store/main-page-process/helpers/make-camera-resolutions';
+import { changeOption } from 'src/components/shared/select/helpers/change-option';
+import { changeCheckboxChecked } from 'src/components/shared/checkbox/helpers/change-checkbox-checked';
+import { changeCheckedRadioBtn } from 'src/components/shared/radio-btn/helpers/change-checked-radio-btn';
+import { makeCameraVideoResolutions } from 'src/store/main-page-process/helpers/make-camera-video-resolutions';
 
 const initialState: InitialState = {
   filter: {
     categories: makeCategories(),
-    estateTypes: makeEstateType(),
-    estateSquare: DEFAULT_ESTATE_SQUARE_NUM,
-    estateRooms: makeEstateRooms(),
+    estate: {
+      types: makeEstateType(),
+      square: DEFAULT_ESTATE_SQUARE_NUM,
+      rooms: makeEstateRooms(),
+    },
+    camera: {
+      types: makeCameraType(),
+      resolutions: makeCameraResolutions(),
+      videoResolutions: makeCameraVideoResolutions(),
+    },
   },
 };
 
@@ -30,22 +43,47 @@ export const mainPageProcess = createSlice({
   initialState,
   reducers: {
     [ActionType.ChangeFilterCategory](state, { payload: category }: { payload: CategoryType }) {
-      state.filter.categories = changeFilterByCategory(state.filter.categories, category);
+      state.filter.categories = changeOption(state.filter.categories, category);
     },
     [ActionType.ChangeEstateType](
       state,
       { payload: estateValues }: { payload: Array<EstateTypeValue> },
     ) {
-      state.filter.estateTypes = changeIsCheckedEstateType(state.filter.estateTypes, estateValues);
+      state.filter.estate.types = changeCheckboxChecked(state.filter.estate.types, estateValues);
     },
     [ActionType.ChangeEstateSquare](state, { payload: squareNum }: { payload: number }) {
-      state.filter.estateSquare = squareNum;
+      state.filter.estate.square = squareNum;
     },
     [ActionType.ChangeEstateRoom](state, { payload: value }: { payload: EstateRoomValue }) {
-      state.filter.estateRooms = changeCheckedValueEstateRooms(state.filter.estateRooms, value);
+      state.filter.estate.rooms = changeCheckedRadioBtn(state.filter.estate.rooms, value);
+    },
+    [ActionType.ChangeCameraType](state, { payload: cameraValues }: { payload: CameraValue[] }) {
+      state.filter.camera.types = changeCheckboxChecked(state.filter.camera.types, cameraValues);
+    },
+    [ActionType.ChangeCameraResolution](
+      state,
+      { payload: resolution }: { payload: CameraResolutionValue },
+    ) {
+      state.filter.camera.resolutions = changeOption(state.filter.camera.resolutions, resolution);
+    },
+    [ActionType.ChangeCameraVideoResolution](
+      state,
+      { payload: videoResolution }: { payload: CameraVideoResolutionValue },
+    ) {
+      state.filter.camera.videoResolutions = changeOption(
+        state.filter.camera.videoResolutions,
+        videoResolution,
+      );
     },
   },
 });
 
-export const { changeFilterCategory, changeEstateType, changeEstateSquare, changeEstateRoom } =
-  mainPageProcess.actions;
+export const {
+  changeFilterCategory,
+  changeEstateType,
+  changeEstateSquare,
+  changeEstateRoom,
+  changeCameraType,
+  changeCameraResolution,
+  changeCameraVideoResolution,
+} = mainPageProcess.actions;

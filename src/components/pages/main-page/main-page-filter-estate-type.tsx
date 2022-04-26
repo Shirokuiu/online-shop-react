@@ -2,15 +2,16 @@ import Checkbox from 'src/components/shared/checkbox/checkbox';
 import { useAppDispatch, useAppSelector } from 'src/hooks';
 import { getEstateTypes } from 'src/store/main-page-process/selectors';
 import { CheckboxChangeEvent } from 'src/components/shared/checkbox/types';
-import { getEstateTypeForDispatch } from 'src/components/pages/main-page/helpers/get-estate-type-for-dispatch';
 import { changeEstateType } from 'src/store/main-page-process/reducer/main-page-process';
+import { getCheckboxCheckedValues } from 'src/components/shared/checkbox/helpers/get-checkbox-checked-values';
+import { EstateTypeValue } from 'src/store/types/main-page-process';
 
 function MainPageFilterEstateType() {
   const estateTypes = useAppSelector(getEstateTypes);
   const dispatch = useAppDispatch();
 
   const handleCheckboxChange = (evt: CheckboxChangeEvent) => {
-    dispatch(changeEstateType(getEstateTypeForDispatch(evt)));
+    dispatch(changeEstateType(getCheckboxCheckedValues<EstateTypeValue>(evt)));
   };
 
   return (

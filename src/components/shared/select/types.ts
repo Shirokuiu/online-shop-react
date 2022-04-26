@@ -6,8 +6,8 @@ export type SelectProps = {
 };
 
 export type Option = {
-  id: number;
+  key: number;
   value: string;
-  text: string;
+  label: string;
   isSelected: boolean;
 };

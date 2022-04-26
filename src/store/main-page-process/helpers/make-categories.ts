@@ -1,12 +1,6 @@
 import { Category, CategoryType } from 'src/store/types/main-page-process';
+import { makeOptions } from 'src/components/shared/select/helpers/make-options';
 
-const values = [
-  CategoryType.All,
-  CategoryType.Estate,
-  CategoryType.Laptops,
-  CategoryType.Camera,
-  CategoryType.Cars,
-];
 const textMap = {
   [CategoryType.All]: 'Все',
   [CategoryType.Estate]: 'Недвижимость',
@@ -16,9 +10,4 @@ const textMap = {
 };
 
 export const makeCategories = (): Category[] =>
-  values.map((value, idx) => ({
-    id: idx + 1,
-    value,
-    text: textMap[value],
-    isSelected: value === 'all',
-  }));
+  makeOptions(CategoryType, CategoryType.All, textMap);
