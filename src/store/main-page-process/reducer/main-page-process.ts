@@ -10,6 +10,7 @@ import {
   EstateRoomValue,
   EstateTypeValue,
   InitialState,
+  LaptopTypeValue,
 } from 'src/store/types/main-page-process';
 import { ActionType } from 'src/store/main-page-process/action-type';
 import { makeEstateTypes } from 'src/store/main-page-process/helpers/make-estate-types';
@@ -21,6 +22,7 @@ import { changeOption } from 'src/components/shared/select/helpers/change-option
 import { changeCheckboxChecked } from 'src/components/shared/checkbox/helpers/change-checkbox-checked';
 import { changeCheckedRadioBtn } from 'src/components/shared/radio-btn/helpers/change-checked-radio-btn';
 import { makeCameraVideoResolutions } from 'src/store/main-page-process/helpers/make-camera-video-resolutions';
+import { makeLaptopTypes } from 'src/store/main-page-process/helpers/make-laptop-types';
 
 const initialState: InitialState = {
   filter: {
@@ -34,6 +36,9 @@ const initialState: InitialState = {
       types: makeCameraTypes(),
       resolutions: makeCameraResolutions(),
       videoResolutions: makeCameraVideoResolutions(),
+    },
+    laptop: {
+      types: makeLaptopTypes(),
     },
   },
 };
@@ -75,6 +80,15 @@ export const mainPageProcess = createSlice({
         videoResolution,
       );
     },
+    [ActionType.ChangeLaptopType](
+      state,
+      { payload: laptopTypeValues }: { payload: LaptopTypeValue[] },
+    ) {
+      state.filter.laptop.types = changeCheckboxChecked(
+        state.filter.laptop.types,
+        laptopTypeValues,
+      );
+    },
   },
 });
 
@@ -86,4 +100,5 @@ export const {
   changeCameraType,
   changeCameraResolution,
   changeCameraVideoResolution,
+  changeLaptopType,
 } = mainPageProcess.actions;

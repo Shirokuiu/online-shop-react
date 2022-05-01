@@ -15,6 +15,9 @@ export type InitialState = {
       resolutions: CameraResolution[];
       videoResolutions: CameraVideResolution[];
     };
+    laptop: {
+      types: LaptopType[];
+    };
   };
 };
 
@@ -29,6 +32,8 @@ export type CameraType = Checkbox;
 export type CameraResolution = Option;
 
 export type CameraVideResolution = Option;
+
+export type LaptopType = Checkbox;
 
 export enum EstateTypeValue {
   House = 'house',
@@ -73,4 +78,10 @@ export enum CameraVideoResolutionValue {
   FullHd = 'Full_HD',
   '4K' = '4K',
   '5K' = '5K',
+}
+
+export enum LaptopTypeValue {
+  Ultra = 'ultra',
+  Home = 'home',
+  Gaming = 'gaming',
 }

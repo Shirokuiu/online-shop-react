@@ -16,3 +16,5 @@ export const getCameraResolutions = (state: State) =>
 
 export const getCameraVideoResolutions = (state: State) =>
   state[NameSpace.MainPage].filter.camera.videoResolutions;
+
+export const getLaptopTypes = (state: State) => state[NameSpace.MainPage].filter.laptop.types;
