@@ -12,10 +12,10 @@ import {
   InitialState,
 } from 'src/store/types/main-page-process';
 import { ActionType } from 'src/store/main-page-process/action-type';
-import { makeEstateType } from 'src/store/main-page-process/helpers/make-estate-type';
+import { makeEstateTypes } from 'src/store/main-page-process/helpers/make-estate-types';
 import { DEFAULT_ESTATE_SQUARE_NUM } from 'src/store/main-page-process/constants';
 import { makeEstateRooms } from 'src/store/main-page-process/helpers/make-estate-rooms';
-import { makeCameraType } from 'src/store/main-page-process/helpers/make-camera-type';
+import { makeCameraTypes } from 'src/store/main-page-process/helpers/make-camera-types';
 import { makeCameraResolutions } from 'src/store/main-page-process/helpers/make-camera-resolutions';
 import { changeOption } from 'src/components/shared/select/helpers/change-option';
 import { changeCheckboxChecked } from 'src/components/shared/checkbox/helpers/change-checkbox-checked';
@@ -26,12 +26,12 @@ const initialState: InitialState = {
   filter: {
     categories: makeCategories(),
     estate: {
-      types: makeEstateType(),
+      types: makeEstateTypes(),
       square: DEFAULT_ESTATE_SQUARE_NUM,
       rooms: makeEstateRooms(),
     },
     camera: {
-      types: makeCameraType(),
+      types: makeCameraTypes(),
       resolutions: makeCameraResolutions(),
       videoResolutions: makeCameraVideoResolutions(),
     },
