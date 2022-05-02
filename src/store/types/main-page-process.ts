@@ -18,6 +18,7 @@ export type InitialState = {
     laptop: {
       types: LaptopType[];
       rams: LaptopRam[];
+      diagonals: LaptopDiagonal[];
     };
   };
 };
@@ -37,6 +38,8 @@ export type CameraVideResolution = Option;
 export type LaptopType = Checkbox;
 
 export type LaptopRam = RadioBtn;
+
+export type LaptopDiagonal = RadioBtn;
 
 export enum EstateTypeValue {
   House = 'house',
@@ -94,4 +97,12 @@ export enum LaptopRamValue {
   '4gb' = '4gb',
   '8gb' = '8gb',
   '16gb' = '16gb',
+}
+
+export enum LaptopDiagonalValue {
+  Any = 'any',
+  '13in' = '13in',
+  '14in' = '14in',
+  '15in' = '15in',
+  '17in' = '17in',
 }

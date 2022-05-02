@@ -10,6 +10,7 @@ import {
   EstateRoomValue,
   EstateTypeValue,
   InitialState,
+  LaptopDiagonalValue,
   LaptopRamValue,
   LaptopTypeValue,
 } from 'src/store/types/main-page-process';
@@ -25,6 +26,7 @@ import { changeCheckedRadioBtn } from 'src/components/shared/radio-btn/helpers/c
 import { makeCameraVideoResolutions } from 'src/store/main-page-process/helpers/make-camera-video-resolutions';
 import { makeLaptopTypes } from 'src/store/main-page-process/helpers/make-laptop-types';
 import { makeLaptopRams } from 'src/store/main-page-process/helpers/make-laptop-rams';
+import { makeLaptopDiagonals } from 'src/store/main-page-process/helpers/make-laptop-diagonals';
 
 const initialState: InitialState = {
   filter: {
@@ -42,6 +44,7 @@ const initialState: InitialState = {
     laptop: {
       types: makeLaptopTypes(),
       rams: makeLaptopRams(),
+      diagonals: makeLaptopDiagonals(),
     },
   },
 };
@@ -95,6 +98,15 @@ export const mainPageProcess = createSlice({
     [ActionType.ChangeLaptopRam](state, { payload: ramValue }: { payload: LaptopRamValue }) {
       state.filter.laptop.rams = changeCheckedRadioBtn(state.filter.laptop.rams, ramValue);
     },
+    [ActionType.ChangeLaptopDiagonal](
+      state,
+      { payload: diagonalValue }: { payload: LaptopDiagonalValue },
+    ) {
+      state.filter.laptop.diagonals = changeCheckedRadioBtn(
+        state.filter.laptop.diagonals,
+        diagonalValue,
+      );
+    },
   },
 });
 
@@ -108,4 +120,5 @@ export const {
   changeCameraVideoResolution,
   changeLaptopType,
   changeLaptopRam,
+  changeLaptopDiagonal,
 } = mainPageProcess.actions;
