@@ -6,5 +6,5 @@ export const changeCheckboxChecked = (
 ): Checkbox[] =>
   checboxes.map((checkbox: Checkbox) => ({
     ...checkbox,
-    isChecked: checkboxValues.includes(checkbox.value),
+    isChecked: checkboxValues.includes(checkbox.value ?? ''),
   }));
