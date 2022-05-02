@@ -7,7 +7,7 @@ import { getCheckboxCheckedValues } from 'src/components/shared/checkbox/helpers
 import { LaptopTypeValue } from 'src/store/types/main-page-process';
 
 function MainPageFilterLaptopType() {
-  const laptopTypes = useAppSelector(getLaptopTypes);
+  const types = useAppSelector(getLaptopTypes);
   const dispatch = useAppDispatch();
 
   const handleCheckboxChange = (evt: CheckboxChangeEvent) => {
@@ -18,7 +18,7 @@ function MainPageFilterLaptopType() {
     <fieldset className="filter__type filter__type--laptop">
       <legend>Тип ноутбука</legend>
       <ul className="filter__checkboxes-list filter__checkboxes-list--laptop-ram">
-        {laptopTypes.map(({ key, id, value, name, label, isChecked }) => (
+        {types.map(({ key, id, value, name, label, isChecked }) => (
           <li key={key} className="filter__checkboxes-item">
             <Checkbox
               id={id}

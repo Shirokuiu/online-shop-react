@@ -7,5 +7,6 @@ export enum ActionType {
   ChangeCameraResolution = 'changeCameraResolution',
   ChangeCameraVideoResolution = 'changeCameraVideoResolution',
   ChangeLaptopType = 'changeLaptopType',
+  ChangeLaptopRam = 'changeLaptopRam',
   ClearState = 'clearState',
 }

@@ -10,6 +10,7 @@ import {
   EstateRoomValue,
   EstateTypeValue,
   InitialState,
+  LaptopRamValue,
   LaptopTypeValue,
 } from 'src/store/types/main-page-process';
 import { ActionType } from 'src/store/main-page-process/action-type';
@@ -23,6 +24,7 @@ import { changeCheckboxChecked } from 'src/components/shared/checkbox/helpers/ch
 import { changeCheckedRadioBtn } from 'src/components/shared/radio-btn/helpers/change-checked-radio-btn';
 import { makeCameraVideoResolutions } from 'src/store/main-page-process/helpers/make-camera-video-resolutions';
 import { makeLaptopTypes } from 'src/store/main-page-process/helpers/make-laptop-types';
+import { makeLaptopRams } from 'src/store/main-page-process/helpers/make-laptop-rams';
 
 const initialState: InitialState = {
   filter: {
@@ -39,6 +41,7 @@ const initialState: InitialState = {
     },
     laptop: {
       types: makeLaptopTypes(),
+      rams: makeLaptopRams(),
     },
   },
 };
@@ -89,6 +92,9 @@ export const mainPageProcess = createSlice({
         laptopTypeValues,
       );
     },
+    [ActionType.ChangeLaptopRam](state, { payload: ramValue }: { payload: LaptopRamValue }) {
+      state.filter.laptop.rams = changeCheckedRadioBtn(state.filter.laptop.rams, ramValue);
+    },
   },
 });
 
@@ -101,4 +107,5 @@ export const {
   changeCameraResolution,
   changeCameraVideoResolution,
   changeLaptopType,
+  changeLaptopRam,
 } = mainPageProcess.actions;

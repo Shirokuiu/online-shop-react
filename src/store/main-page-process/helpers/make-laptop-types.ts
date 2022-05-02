@@ -1,5 +1,5 @@
 import { makeCheckboxes } from 'src/components/shared/checkbox/helpers/make-checkboxes';
-import { LaptopTypeValue } from 'src/store/types/main-page-process';
+import { LaptopType, LaptopTypeValue } from 'src/store/types/main-page-process';
 
 const labelMap = {
   [LaptopTypeValue.Ultra]: 'Ультрабук',
@@ -7,4 +7,5 @@ const labelMap = {
   [LaptopTypeValue.Gaming]: 'Игровой ноутбук',
 };
 
-export const makeLaptopTypes = () => makeCheckboxes(LaptopTypeValue, 'laptop-type', labelMap);
+export const makeLaptopTypes = (): LaptopType[] =>
+  makeCheckboxes(LaptopTypeValue, 'laptop-type', labelMap);
