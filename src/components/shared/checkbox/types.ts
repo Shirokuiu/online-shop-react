@@ -1,20 +1,19 @@
-export type CheckboxProps = {
-  children?: JSX.Element | string;
+type BaseCheckbox = {
   name?: string;
   value?: string;
   id?: string;
   isChecked?: boolean;
-  onChange?: (evt: CheckboxChangeEvent) => void;
 };
 
-export type Checkbox = {
+export interface CheckboxProps extends BaseCheckbox {
+  children?: JSX.Element | string;
+  onChange?: (evt: CheckboxChangeEvent) => void;
+}
+
+export interface Checkbox extends BaseCheckbox {
   key: number;
-  name: string;
-  value: string;
-  id: string;
   label: string;
-  isChecked?: boolean;
-};
+}
 
 export type CheckboxChangeEvent = {
   isChecked: boolean;
