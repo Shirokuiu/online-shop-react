@@ -1,10 +1,11 @@
-import Checkbox from 'src/components/shared/checkbox/checkbox';
 import { useAppDispatch, useAppSelector } from 'src/hooks';
 import { getEstateTypes } from 'src/store/main-page-process/selectors';
 import { CheckboxChangeEvent } from 'src/components/shared/checkbox/types';
 import { changeEstateType } from 'src/store/main-page-process/reducer/main-page-process';
 import { getCheckboxCheckedValues } from 'src/components/shared/checkbox/helpers/get-checkbox-checked-values';
 import { EstateTypeValue } from 'src/store/types/main-page-process';
+import MainPageCheckboxList from 'src/components/pages/main-page/main-page-checkbox-list';
+import { MainPageCheckboxListType } from 'src/components/pages/main-page/types/main-page-checkbox-list';
 
 function MainPageFilterEstateType() {
   const estateTypes = useAppSelector(getEstateTypes);
@@ -17,21 +18,11 @@ function MainPageFilterEstateType() {
   return (
     <fieldset className="filter__type filter__type--estate">
       <legend>Тип недвижимости</legend>
-      <ul className="filter__checkboxes-list filter__checkboxes-list--estate">
-        {estateTypes.map(({ key, value, label, id, name, isChecked }) => (
-          <li key={key} className="filter__checkboxes-item">
-            <Checkbox
-              id={id}
-              name={name}
-              value={value}
-              isChecked={isChecked}
-              onChange={handleCheckboxChange}
-            >
-              {label}
-            </Checkbox>
-          </li>
-        ))}
-      </ul>
+      <MainPageCheckboxList
+        items={estateTypes}
+        type={MainPageCheckboxListType.Estate}
+        onChange={handleCheckboxChange}
+      />
     </fieldset>
   );
 }
