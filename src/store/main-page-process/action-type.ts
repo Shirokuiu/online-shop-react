@@ -10,5 +10,6 @@ export enum ActionType {
   ChangeLaptopRam = 'changeLaptopRam',
   ChangeLaptopDiagonal = 'changeLaptopDiagonal',
   ChangeLaptopProcessor = 'changeLaptopProcessor',
+  ChangeCarYear = 'changeCarYear',
   ClearState = 'clearState',
 }

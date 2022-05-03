@@ -26,3 +26,5 @@ export const getLaptopDiagonals = (state: State) =>
 
 export const getLaptopProcessors = (state: State) =>
   state[NameSpace.MainPage].filter.laptop.processors;
+
+export const getCaryears = (state: State) => state[NameSpace.MainPage].filter.car.years;

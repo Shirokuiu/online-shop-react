@@ -29,6 +29,7 @@ import { makeLaptopTypes } from 'src/store/main-page-process/helpers/make-laptop
 import { makeLaptopRams } from 'src/store/main-page-process/helpers/make-laptop-rams';
 import { makeLaptopDiagonals } from 'src/store/main-page-process/helpers/make-laptop-diagonals';
 import { makeLaptopProcessors } from 'src/store/main-page-process/helpers/make-laptop-processors';
+import { makeCarYears } from 'src/store/main-page-process/helpers/make-car-years';
 
 const initialState: InitialState = {
   filter: {
@@ -48,6 +49,9 @@ const initialState: InitialState = {
       rams: makeLaptopRams(),
       diagonals: makeLaptopDiagonals(),
       processors: makeLaptopProcessors(),
+    },
+    car: {
+      years: makeCarYears(),
     },
   },
 };
@@ -119,6 +123,9 @@ export const mainPageProcess = createSlice({
         laptopProcessorValues,
       );
     },
+    [ActionType.ChangeCarYear](state, { payload: year }: { payload: string }) {
+      state.filter.car.years = changeOption(state.filter.car.years, year);
+    },
   },
 });
 
@@ -134,4 +141,5 @@ export const {
   changeLaptopRam,
   changeLaptopDiagonal,
   changeLaptopProcessor,
+  changeCarYear,
 } = mainPageProcess.actions;
