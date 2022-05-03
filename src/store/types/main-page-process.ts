@@ -21,6 +21,11 @@ export type InitialState = {
       diagonals: LaptopDiagonal[];
       processors: LaptopProcessor[];
     };
+    car: {
+      years: CarYear[];
+      transmissions: CarTransmission[];
+      bodyItems: CarBodyItem[];
+    };
   };
 };
 
@@ -43,6 +48,12 @@ export type LaptopRam = RadioBtn;
 export type LaptopDiagonal = RadioBtn;
 
 export type LaptopProcessor = Checkbox;
+
+export type CarYear = Option;
+
+export type CarTransmission = RadioBtn;
+
+export type CarBodyItem = Checkbox;
 
 export enum EstateTypeValue {
   House = 'house',
@@ -114,4 +125,26 @@ export enum LaptopProcessorValue {
   i3 = 'i3',
   i5 = 'i5',
   i7 = 'i7',
+}
+
+export const CarYearValue = {
+  '1900': '1900',
+  '1940': '1940',
+  '1960': '1960',
+  '1980': '1980',
+  '2000': '2000',
+};
+
+export enum CarTransmissionValue {
+  Any = 'any',
+  Mechanic = 'mechanic',
+  Auto = 'auto',
+}
+
+export enum CarBodyValue {
+  Sedan = 'sedan',
+  Universal = 'universal',
+  Hatchback = 'hatchback',
+  Jeep = 'jeep',
+  Cupe = 'cupe',
 }

@@ -2,6 +2,7 @@ import MainPageFilterCategories from 'src/components/pages/main-page/main-page-f
 import MainPageFilterEstateWrap from 'src/components/pages/main-page/main-page-filter-estate-wrap';
 import MainPageFilterCameraWrap from 'src/components/pages/main-page/main-page-filter-camera-wrap';
 import MainPageFilterLaptopWrap from 'src/components/pages/main-page/main-page-filter-laptop-wrap';
+import MainPageFilterCarWrap from 'src/components/pages/main-page/main-page-filter-car-wrap';
 
 function MainPageFilter() {
   return (
@@ -12,6 +13,7 @@ function MainPageFilter() {
         <MainPageFilterEstateWrap />
         <MainPageFilterCameraWrap />
         <MainPageFilterLaptopWrap />
+        <MainPageFilterCarWrap />
         <button className="button filter__button" type="submit">
           Показать
         </button>
