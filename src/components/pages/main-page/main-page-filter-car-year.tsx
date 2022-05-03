@@ -11,7 +11,12 @@ function MainPageFilterCarYear() {
     dispatch(changeCarYear(value));
   };
 
-  return <Select id="car_year" name="car_year" options={years} onChange={handleSelectChange} />;
+  return (
+    <div className="filter__select-wrapper">
+      <label htmlFor="resolution-video">Минимальный год выпуска</label>
+      <Select id="car_year" name="car_year" options={years} onChange={handleSelectChange} />
+    </div>
+  );
 }
 
 export default MainPageFilterCarYear;

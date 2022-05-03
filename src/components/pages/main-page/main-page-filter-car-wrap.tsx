@@ -5,12 +5,9 @@ import MainPageFilterCarBody from 'src/components/pages/main-page/main-page-filt
 function MainPageFilterCarWrap() {
   return (
     <div className="filter__car">
-      <div className="filter__select-wrapper">
-        <label htmlFor="resolution-video">Минимальный год выпуска</label>
-        <MainPageFilterCarYear />
-        <MainPageFilterCarTransmission />
-        <MainPageFilterCarBody />
-      </div>
+      <MainPageFilterCarYear />
+      <MainPageFilterCarTransmission />
+      <MainPageFilterCarBody />
     </div>
   );
 }
