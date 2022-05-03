@@ -10,4 +10,5 @@ export enum MainPageCheckboxListType {
   Estate = 'estate',
   Camera = 'camera',
   LaptopRam = 'laptop-ram',
+  LaptopProcessor = 'laptop-processor',
 }

@@ -11,6 +11,7 @@ import {
   EstateTypeValue,
   InitialState,
   LaptopDiagonalValue,
+  LaptopProcessorValue,
   LaptopRamValue,
   LaptopTypeValue,
 } from 'src/store/types/main-page-process';
@@ -27,6 +28,7 @@ import { makeCameraVideoResolutions } from 'src/store/main-page-process/helpers/
 import { makeLaptopTypes } from 'src/store/main-page-process/helpers/make-laptop-types';
 import { makeLaptopRams } from 'src/store/main-page-process/helpers/make-laptop-rams';
 import { makeLaptopDiagonals } from 'src/store/main-page-process/helpers/make-laptop-diagonals';
+import { makeLaptopProcessors } from 'src/store/main-page-process/helpers/make-laptop-processors';
 
 const initialState: InitialState = {
   filter: {
@@ -45,6 +47,7 @@ const initialState: InitialState = {
       types: makeLaptopTypes(),
       rams: makeLaptopRams(),
       diagonals: makeLaptopDiagonals(),
+      processors: makeLaptopProcessors(),
     },
   },
 };
@@ -107,6 +110,15 @@ export const mainPageProcess = createSlice({
         diagonalValue,
       );
     },
+    [ActionType.ChangeLaptopProcessor](
+      state,
+      { payload: laptopProcessorValues }: { payload: LaptopProcessorValue[] },
+    ) {
+      state.filter.laptop.processors = changeCheckboxChecked(
+        state.filter.laptop.processors,
+        laptopProcessorValues,
+      );
+    },
   },
 });
 
@@ -121,4 +133,5 @@ export const {
   changeLaptopType,
   changeLaptopRam,
   changeLaptopDiagonal,
+  changeLaptopProcessor,
 } = mainPageProcess.actions;

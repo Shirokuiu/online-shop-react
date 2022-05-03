@@ -23,3 +23,6 @@ export const getLaptopRams = (state: State) => state[NameSpace.MainPage].filter.
 
 export const getLaptopDiagonals = (state: State) =>
   state[NameSpace.MainPage].filter.laptop.diagonals;
+
+export const getLaptopProcessors = (state: State) =>
+  state[NameSpace.MainPage].filter.laptop.processors;
