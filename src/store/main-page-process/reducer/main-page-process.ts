@@ -10,30 +10,44 @@ import {
   EstateRoomValue,
   EstateTypeValue,
   InitialState,
+  LaptopDiagonalValue,
+  LaptopProcessorValue,
+  LaptopRamValue,
+  LaptopTypeValue,
 } from 'src/store/types/main-page-process';
 import { ActionType } from 'src/store/main-page-process/action-type';
-import { makeEstateType } from 'src/store/main-page-process/helpers/make-estate-type';
+import { makeEstateTypes } from 'src/store/main-page-process/helpers/make-estate-types';
 import { DEFAULT_ESTATE_SQUARE_NUM } from 'src/store/main-page-process/constants';
 import { makeEstateRooms } from 'src/store/main-page-process/helpers/make-estate-rooms';
-import { makeCameraType } from 'src/store/main-page-process/helpers/make-camera-type';
+import { makeCameraTypes } from 'src/store/main-page-process/helpers/make-camera-types';
 import { makeCameraResolutions } from 'src/store/main-page-process/helpers/make-camera-resolutions';
 import { changeOption } from 'src/components/shared/select/helpers/change-option';
 import { changeCheckboxChecked } from 'src/components/shared/checkbox/helpers/change-checkbox-checked';
 import { changeCheckedRadioBtn } from 'src/components/shared/radio-btn/helpers/change-checked-radio-btn';
 import { makeCameraVideoResolutions } from 'src/store/main-page-process/helpers/make-camera-video-resolutions';
+import { makeLaptopTypes } from 'src/store/main-page-process/helpers/make-laptop-types';
+import { makeLaptopRams } from 'src/store/main-page-process/helpers/make-laptop-rams';
+import { makeLaptopDiagonals } from 'src/store/main-page-process/helpers/make-laptop-diagonals';
+import { makeLaptopProcessors } from 'src/store/main-page-process/helpers/make-laptop-processors';
 
 const initialState: InitialState = {
   filter: {
     categories: makeCategories(),
     estate: {
-      types: makeEstateType(),
+      types: makeEstateTypes(),
       square: DEFAULT_ESTATE_SQUARE_NUM,
       rooms: makeEstateRooms(),
     },
     camera: {
-      types: makeCameraType(),
+      types: makeCameraTypes(),
       resolutions: makeCameraResolutions(),
       videoResolutions: makeCameraVideoResolutions(),
+    },
+    laptop: {
+      types: makeLaptopTypes(),
+      rams: makeLaptopRams(),
+      diagonals: makeLaptopDiagonals(),
+      processors: makeLaptopProcessors(),
     },
   },
 };
@@ -75,6 +89,36 @@ export const mainPageProcess = createSlice({
         videoResolution,
       );
     },
+    [ActionType.ChangeLaptopType](
+      state,
+      { payload: laptopTypeValues }: { payload: LaptopTypeValue[] },
+    ) {
+      state.filter.laptop.types = changeCheckboxChecked(
+        state.filter.laptop.types,
+        laptopTypeValues,
+      );
+    },
+    [ActionType.ChangeLaptopRam](state, { payload: ramValue }: { payload: LaptopRamValue }) {
+      state.filter.laptop.rams = changeCheckedRadioBtn(state.filter.laptop.rams, ramValue);
+    },
+    [ActionType.ChangeLaptopDiagonal](
+      state,
+      { payload: diagonalValue }: { payload: LaptopDiagonalValue },
+    ) {
+      state.filter.laptop.diagonals = changeCheckedRadioBtn(
+        state.filter.laptop.diagonals,
+        diagonalValue,
+      );
+    },
+    [ActionType.ChangeLaptopProcessor](
+      state,
+      { payload: laptopProcessorValues }: { payload: LaptopProcessorValue[] },
+    ) {
+      state.filter.laptop.processors = changeCheckboxChecked(
+        state.filter.laptop.processors,
+        laptopProcessorValues,
+      );
+    },
   },
 });
 
@@ -86,4 +130,8 @@ export const {
   changeCameraType,
   changeCameraResolution,
   changeCameraVideoResolution,
+  changeLaptopType,
+  changeLaptopRam,
+  changeLaptopDiagonal,
+  changeLaptopProcessor,
 } = mainPageProcess.actions;

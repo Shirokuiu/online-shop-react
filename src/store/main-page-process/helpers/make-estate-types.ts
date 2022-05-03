@@ -7,5 +7,5 @@ const labelMap = {
   [EstateTypeValue.apartments]: 'Апартаменты',
 };
 
-export const makeEstateType = (): EstateType[] =>
+export const makeEstateTypes = (): EstateType[] =>
   makeCheckboxes(EstateTypeValue, 'estate-type', labelMap);

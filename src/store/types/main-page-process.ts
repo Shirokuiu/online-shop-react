@@ -15,6 +15,12 @@ export type InitialState = {
       resolutions: CameraResolution[];
       videoResolutions: CameraVideResolution[];
     };
+    laptop: {
+      types: LaptopType[];
+      rams: LaptopRam[];
+      diagonals: LaptopDiagonal[];
+      processors: LaptopProcessor[];
+    };
   };
 };
 
@@ -29,6 +35,14 @@ export type CameraType = Checkbox;
 export type CameraResolution = Option;
 
 export type CameraVideResolution = Option;
+
+export type LaptopType = Checkbox;
+
+export type LaptopRam = RadioBtn;
+
+export type LaptopDiagonal = RadioBtn;
+
+export type LaptopProcessor = Checkbox;
 
 export enum EstateTypeValue {
   House = 'house',
@@ -73,4 +87,31 @@ export enum CameraVideoResolutionValue {
   FullHd = 'Full_HD',
   '4K' = '4K',
   '5K' = '5K',
+}
+
+export enum LaptopTypeValue {
+  Ultra = 'ultra',
+  Home = 'home',
+  Gaming = 'gaming',
+}
+
+export enum LaptopRamValue {
+  Any = 'any',
+  '4gb' = '4gb',
+  '8gb' = '8gb',
+  '16gb' = '16gb',
+}
+
+export enum LaptopDiagonalValue {
+  Any = 'any',
+  '13in' = '13in',
+  '14in' = '14in',
+  '15in' = '15in',
+  '17in' = '17in',
+}
+
+export enum LaptopProcessorValue {
+  i3 = 'i3',
+  i5 = 'i5',
+  i7 = 'i7',
 }

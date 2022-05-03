@@ -7,5 +7,5 @@ const labelMap = {
   [CameraValue.Mirrorless]: 'Беззеркальный',
 };
 
-export const makeCameraType = (): CameraType[] =>
+export const makeCameraTypes = (): CameraType[] =>
   makeCheckboxes(CameraValue, 'camera-type', labelMap);
