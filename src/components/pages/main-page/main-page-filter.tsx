@@ -3,6 +3,7 @@ import MainPageFilterEstateWrap from 'src/components/pages/main-page/main-page-f
 import MainPageFilterCameraWrap from 'src/components/pages/main-page/main-page-filter-camera-wrap';
 import MainPageFilterLaptopWrap from 'src/components/pages/main-page/main-page-filter-laptop-wrap';
 import MainPageFilterCarWrap from 'src/components/pages/main-page/main-page-filter-car-wrap';
+import MainPageFilterPrice from 'src/components/pages/main-page/main-page-filter-price';
 
 function MainPageFilter() {
   return (
@@ -10,6 +11,7 @@ function MainPageFilter() {
       <h2 className="title filter__title">Фильтр</h2>
       <form className="filter__form" action="#" method="post">
         <MainPageFilterCategories />
+        <MainPageFilterPrice />
         <MainPageFilterEstateWrap />
         <MainPageFilterCameraWrap />
         <MainPageFilterLaptopWrap />
