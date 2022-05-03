@@ -1,10 +1,10 @@
 import Select from 'src/components/shared/select/select';
 import { useAppDispatch, useAppSelector } from 'src/hooks';
-import { getCaryears } from 'src/store/main-page-process/selectors';
+import { getCarYears } from 'src/store/main-page-process/selectors';
 import { changeCarYear } from 'src/store/main-page-process/reducer/main-page-process';
 
 function MainPageFilterCarYear() {
-  const years = useAppSelector(getCaryears);
+  const years = useAppSelector(getCarYears);
   const dispatch = useAppDispatch();
 
   const handleSelectChange = (value: string) => {

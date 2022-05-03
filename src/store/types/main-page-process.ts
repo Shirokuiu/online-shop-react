@@ -23,6 +23,8 @@ export type InitialState = {
     };
     car: {
       years: CarYear[];
+      transmissions: CarTransmission[];
+      bodyItems: CarBodyItem[];
     };
   };
 };
@@ -48,6 +50,10 @@ export type LaptopDiagonal = RadioBtn;
 export type LaptopProcessor = Checkbox;
 
 export type CarYear = Option;
+
+export type CarTransmission = RadioBtn;
+
+export type CarBodyItem = Checkbox;
 
 export enum EstateTypeValue {
   House = 'house',
@@ -128,3 +134,17 @@ export const CarYearValue = {
   '1980': '1980',
   '2000': '2000',
 };
+
+export enum CarTransmissionValue {
+  Any = 'any',
+  Mechanic = 'mechanic',
+  Auto = 'auto',
+}
+
+export enum CarBodyValue {
+  Sedan = 'sedan',
+  Universal = 'universal',
+  Hatchback = 'hatchback',
+  Jeep = 'jeep',
+  Cupe = 'cupe',
+}

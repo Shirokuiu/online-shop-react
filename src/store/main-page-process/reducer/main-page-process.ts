@@ -6,6 +6,8 @@ import {
   CameraResolutionValue,
   CameraValue,
   CameraVideoResolutionValue,
+  CarBodyValue,
+  CarTransmissionValue,
   CategoryType,
   EstateRoomValue,
   EstateTypeValue,
@@ -30,6 +32,8 @@ import { makeLaptopRams } from 'src/store/main-page-process/helpers/make-laptop-
 import { makeLaptopDiagonals } from 'src/store/main-page-process/helpers/make-laptop-diagonals';
 import { makeLaptopProcessors } from 'src/store/main-page-process/helpers/make-laptop-processors';
 import { makeCarYears } from 'src/store/main-page-process/helpers/make-car-years';
+import { makeCarTransmissions } from 'src/store/main-page-process/helpers/make-car-transmissions';
+import { makeCarBodyItems } from 'src/store/main-page-process/helpers/make-car-body-items';
 
 const initialState: InitialState = {
   filter: {
@@ -52,6 +56,8 @@ const initialState: InitialState = {
     },
     car: {
       years: makeCarYears(),
+      transmissions: makeCarTransmissions(),
+      bodyItems: makeCarBodyItems(),
     },
   },
 };
@@ -126,6 +132,15 @@ export const mainPageProcess = createSlice({
     [ActionType.ChangeCarYear](state, { payload: year }: { payload: string }) {
       state.filter.car.years = changeOption(state.filter.car.years, year);
     },
+    [ActionType.ChangeCarTransmission](
+      state,
+      { payload: value }: { payload: CarTransmissionValue },
+    ) {
+      state.filter.car.transmissions = changeCheckedRadioBtn(state.filter.car.transmissions, value);
+    },
+    [ActionType.ChangeCarBodyItem](state, { payload: carBodyValues }: { payload: CarBodyValue[] }) {
+      state.filter.car.bodyItems = changeCheckboxChecked(state.filter.car.bodyItems, carBodyValues);
+    },
   },
 });
 
@@ -142,4 +157,6 @@ export const {
   changeLaptopDiagonal,
   changeLaptopProcessor,
   changeCarYear,
+  changeCarTransmission,
+  changeCarBodyItem,
 } = mainPageProcess.actions;
