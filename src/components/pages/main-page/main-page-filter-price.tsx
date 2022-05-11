@@ -1,8 +1,10 @@
+import Slider from 'src/components/shared/slider/slider';
+
 function MainPageFilterPrice() {
   return (
     <div className="filter__range">
       <label htmlFor="range">Цена, ₽</label>
-      <input type="text" id="sampleSlider" />
+      <Slider />
     </div>
   );
 }
