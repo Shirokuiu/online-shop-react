@@ -10,15 +10,15 @@ function Slider({
   onChange = () => undefined,
   onAfterChange = () => undefined,
 }: Props) {
-  const [value, setValue] = useState<number[]>(defaultValues);
+  const [values, setValues] = useState<number[]>(defaultValues);
 
-  const handleOnChange = (values: number[]) => {
-    setValue(values);
-    onChange(values);
+  const handleOnChange = (sliderValues: number[]) => {
+    setValues(sliderValues);
+    onChange(sliderValues);
   };
 
-  const handleAfterChange = (values: number[]) => {
-    onAfterChange(values);
+  const handleAfterChange = (sliderValues: number[]) => {
+    onAfterChange(sliderValues);
   };
 
   return (
@@ -26,7 +26,7 @@ function Slider({
       className="slider"
       thumbClassName="slider__thumb"
       trackClassName="slider__track"
-      value={value}
+      value={values}
       defaultValue={defaultValues}
       ariaLabel={['Lower thumb', 'Upper thumb']}
       ariaValuetext={(state) => `Thumb value ${state.valueNow}`}
