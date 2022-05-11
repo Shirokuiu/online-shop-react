@@ -1,0 +1,15 @@
+@import 'src/assets/styles/variables';
+
+.slider-price {
+
+  &__tooltip-wrap {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 10px;
+  }
+
+  &__tooltip {
+    font-size: 13px;
+    color: $disabled-blue;
+  }
+}
