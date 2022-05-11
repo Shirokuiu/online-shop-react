@@ -1,10 +1,12 @@
-import Slider from 'src/components/shared/slider/slider';
+import SliderPrice from 'src/components/shared/slider-price/slider-price';
 
 function MainPageFilterPrice() {
   return (
     <div className="filter__range">
-      <label htmlFor="range">Цена, ₽</label>
-      <Slider />
+      <label htmlFor="range" className="filter__range-title">
+        Цена, ₽
+      </label>
+      <SliderPrice />
     </div>
   );
 }
