@@ -1,5 +1,8 @@
+import { createSelector } from 'reselect';
+
 import { State } from 'src/store/types/state';
 import { NameSpace } from 'src/store/constants';
+import { Category, CategoryType } from 'src/store/types/main-page-process';
 
 export const getFilterCategories = (state: State) => state[NameSpace.MainPage].filter.categories;
 
@@ -33,3 +36,13 @@ export const getCarTransmissions = (state: State) =>
   state[NameSpace.MainPage].filter.car.transmissions;
 
 export const getCarBodyItems = (state: State) => state[NameSpace.MainPage].filter.car.bodyItems;
+
+export const getActiveCategoryFilter = createSelector(
+  [getFilterCategories],
+  (categories: Category[]): CategoryType => {
+    return (
+      (categories.find((category) => category.isSelected)?.value as CategoryType) ??
+      CategoryType.All
+    );
+  },
+);
